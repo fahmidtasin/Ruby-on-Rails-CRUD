@@ -1,0 +1,16 @@
+<h1 class="text-center"> Book Details </h1>
+
+<hr>
+
+<div class="text-center">
+	<p>Title:<strong> <%= @book.title %>  </strong></p>
+	<p>Subject:<strong> <%= @book.subject.name %>  </strong></p>
+	<p>Price:<strong> <%= @book.price %>  </strong></p>
+	<p>Description:<strong> <%= @book.description %>  </strong></p>
+</div>
+
+<hr>
+
+<div class="text-center">
+	<%= link_to "Back", books_path %>
+</div>

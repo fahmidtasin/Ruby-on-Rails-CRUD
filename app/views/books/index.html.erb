@@ -1,0 +1,42 @@
+<% if flash[:notice] %>
+  <div class="alert alert-success">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<div class="text-center">
+
+  <hr><h4> Books </h4><br>
+  <% if @books.blank? %>
+	<p class="display-4"> There are no books available right now! </p>
+  <% else %>
+	<p> These are the books currently in our system.. </p>
+
+	<table class="table table-striped table-hover table-bordered">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @books.each_with_index do |b, i| %>
+			<tr>
+				<td><%= i+1 %></td>
+				<td><%= link_to b.title, book_path(b), class: 'text-dark'%></td>
+				<td><%= b.price %></td>
+				<td><b><%= link_to "Edit", edit_book_path(b), class: 'btn btn-info' %></b></td>
+				<td><b><%= button_to "Delete", book_path(b), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' }%></b></td>
+			</tr>
+		<% end %>
+	</tbody>
+	</table>
+
+  <% end %>
+
+	<%= link_to "Add new books", {:action => 'new'}, {class:"btn btn-primary"} %>
+
+</div>
